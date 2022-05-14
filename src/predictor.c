@@ -286,7 +286,7 @@ init_predictor()
       init_tournament();
       break;
     case CUSTOM:
-      init_pshare();
+      train_tournament(pc, outcome);
       break;
     default:
       break;
@@ -311,7 +311,7 @@ make_prediction(uint32_t pc)
     case TOURNAMENT:
       return tournament_predict(pc);
     case CUSTOM:
-      return pshare_predict(pc);
+      return train_tournament(pc, outcome);
     default:
       break;
   }
@@ -337,7 +337,7 @@ train_predictor(uint32_t pc, uint8_t outcome)
     case TOURNAMENT:
       return train_tournament(pc, outcome);
     case CUSTOM:
-      return train_pshare(pc, outcome);
+      return train_tournament(pc, outcome);
     default:
       break;
   }
