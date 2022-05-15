@@ -41,9 +41,9 @@ int pcindexBits = 8;
 //
 //gshare
 uint8_t *bht_gshare;
-uint64_t ghistory;
+uint32_t ghistory;
 
-uint64_t *pht_local;
+uint32_t *pht_local;
 uint8_t *bht_local;
 uint8_t *choicePT;
 
@@ -145,6 +145,7 @@ uint8_t pshare_predict(uint32_t pc)
 
 uint8_t tournament_predict(uint32_t pc)
 {
+  pc = pc >> 2;
   uint32_t bht_global_index = (ghistory) & ((1 << ghistoryBits) - 1);
   uint8_t choice = choicePT[bht_global_index];
   uint8_t gshare_prediction = gshare_predict(pc);
@@ -225,6 +226,7 @@ void train_pshare(uint32_t pc, uint8_t outcome)
 
 void train_tournament(uint32_t pc, uint8_t outcome)
 {
+  pc = pc >> 2;
   uint32_t bht_global_index = (ghistory) & ((1 << ghistoryBits) - 1);
   uint8_t choice = choicePT[bht_global_index];
 
