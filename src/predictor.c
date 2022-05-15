@@ -30,6 +30,7 @@ int bpType;       // Branch Prediction Type
 int verbose;
 int lhistoryBits = 13; // Number of bits used for Local History
 int pcindexBits = 8;
+int pcshift = 2;
 
 
 //------------------------------------//
@@ -145,7 +146,7 @@ uint8_t pshare_predict(uint32_t pc)
 
 uint8_t tournament_predict(uint32_t pc)
 {
-  pc = pc >> 2;
+  pc = pc >> pcshift;
   uint32_t bht_global_index = (ghistory) & ((1 << ghistoryBits) - 1);
   uint8_t choice = choicePT[bht_global_index];
   uint8_t gshare_prediction = gshare_predict(pc);
@@ -226,7 +227,7 @@ void train_pshare(uint32_t pc, uint8_t outcome)
 
 void train_tournament(uint32_t pc, uint8_t outcome)
 {
-  pc = pc >> 2;
+  pc = pc >> pcshift;
   uint32_t bht_global_index = (ghistory) & ((1 << ghistoryBits) - 1);
   uint8_t choice = choicePT[bht_global_index];
 
@@ -291,6 +292,7 @@ init_predictor()
       pcindexBits = 10;
       ghistoryBits = 8;
       lhistoryBits = 13;
+      pcshift = 5;
       init_tournament();
       break;
     default:
