@@ -72,7 +72,7 @@ void init_pshare()
   int pht_entries = 1 << pcindexBits;
   int bht_entries = 1 << lhistoryBits;
 
-  pht_local = (uint64_t*)malloc(pht_entries * sizeof(uint64_t));
+  pht_local = (uint32_t*)malloc(pht_entries * sizeof(uint32_t));
   bht_local = (uint8_t*)malloc(bht_entries * sizeof(uint8_t));
 
   for(int i = 0; i < pht_entries; ++i)
