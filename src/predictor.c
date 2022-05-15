@@ -292,7 +292,7 @@ init_predictor()
       pcindexBits = 10;
       ghistoryBits = 8;
       lhistoryBits = 13;
-      pcshift = 0;
+      pcshift = 2;
       init_tournament();
       break;
     default:
