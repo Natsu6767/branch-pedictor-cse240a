@@ -28,8 +28,8 @@ const char *bpName[4] = { "Static", "Gshare",
 int ghistoryBits = 12; // Number of bits used for Global History
 int bpType;       // Branch Prediction Type
 int verbose;
-int lhistoryBits = 13; // Number of bits used for Local History
-int pcindexBits = 8;
+int lhistoryBits = 10; // Number of bits used for Local History
+int pcindexBits = 10;
 int pcshift = 2;
 
 
