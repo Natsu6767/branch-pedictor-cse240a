@@ -28,7 +28,7 @@ const char *bpName[4] = { "Static", "Gshare",
 int ghistoryBits = 12; // Number of bits used for Global History
 int bpType;       // Branch Prediction Type
 int verbose;
-int lhistoryBits = 12; // Number of bits used for Local History
+int lhistoryBits = 13; // Number of bits used for Local History
 int pcindexBits = 8;
 
 
@@ -288,7 +288,9 @@ init_predictor()
       init_tournament();
       break;
     case CUSTOM:
-      pcindexBits = 11;
+      pcindexBits = 10;
+      ghistoryBits = 8;
+      lhistoryBits = 13;
       init_tournament();
       break;
     default:
